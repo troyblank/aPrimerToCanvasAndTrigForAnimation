@@ -1,0 +1,107 @@
+/* http://meyerweb.com/eric/tools/css/reset/ *//* v1.0 | 20080212 */html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;} body {line-height: 1;} ol, ul {list-style: none;} blockquote, q {quotes: none;} blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;} :focus {outline: 0;} ins {text-decoration: none;} del {text-decoration: line-through;} table {border-collapse: collapse; border-spacing: 0;}
+
+/*html5 backwards display rule */
+article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary{
+    display: block;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body{
+	width: 100%;
+	margin:0;
+	background: #F6F6EB;
+	font-family: Arial;
+	font-size:30px;
+	font-weight: bold;
+	background: url(../images/stripePatt.png) repeat;
+}
+.right{
+    float: right;
+}
+header{
+    padding: 10px;
+}
+nav{
+    
+}
+section{
+    margin: 50px; 
+}
+section.code{
+	margin: 10px 0;
+	padding: 0;
+}
+section.diagram{
+	width: 700px;
+	margin-left: auto; margin-right: auto;
+}
+section.contactInfo{
+    line-height: 40px;
+}
+canvas{
+	margin: 10px auto 0px auto; border: 1px dashed #000000; background-color: #ffffff;
+}
+pre{
+	padding-left: 30px;
+	font-size: 20px;
+	color: #b8c7ea;
+	border: 1pt solid #555555;
+	background: url("../images/pre.png") repeat scroll left top #0c1021;
+}
+h1{
+    height: 50px;
+    display: block;
+    background: url(../images/beaker.png) no-repeat;
+    padding: 13px 0px 0px 50px;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+li {
+    margin-bottom: 20px;
+    padding-left: 40px;
+    background: url(../images/plus.png) no-repeat;
+    min-height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#right_btn{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    float: left;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+#left_btn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    float: left;
+    margin-right: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+span.highlight{
+    color: #ff5813;
+}
+img{
+	border:0;
+}
+a{
+	text-decoration:none;
+	color:#c40000;
+}
+div.clear{
+	clear:both;
+}
+
+/* OBJ STYLES  */
+div.blackLine{
+	width: 100%;
+	background:#000000;
+}

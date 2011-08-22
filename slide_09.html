@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="./images/favicon.ico" rel="shortcut icon">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="javaScript/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="javaScript/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Clearing Canvas</h1>
+    </header>
+    <div style="height:8px;" class="blackLine"></div>
+    <section class="code">
+        <pre>    
+...            
+
+function drawBall(){
+    <span class="highlight">clearCanvas(canvasContext);</span>
+    canvasContext.beginPath();
+    canvasContext.arc(xVal, yVal, 20, 0, Math.PI*2, false);
+    canvasContext.closePath();
+    canvasContext.fill();
+}
+
+function startBall(){
+    timer = setInterval(animateBall, 33);
+}
+
+function animateBall(e){
+    xVal += xVelocity;
+    yVal += yVelocity;
+    drawBall();
+}
+
+<span class="highlight">function clearCanvas(cxt) {
+    //clears all pixels on the canvas in the given rectangle to transparent.
+    cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+}</span>
+        </pre>
+    </section>
+    <nav>
+        <a id="left_btn" href="slide_08.html">Previous</a>
+        <a id="right_btn" href="slide_10.html">Next</a>
+    </nav>
+</body>

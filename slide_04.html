@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="./images/favicon.ico" rel="shortcut icon">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="javaScript/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="javaScript/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Acessing the Canvas Tag with JQuery</h1>
+    </header>
+    <div style="height:8px;" class="blackLine"></div>
+    <section class="code">
+    	<pre>
+
+&lt;canvas width="600px" height="300px" id="myCanvas"&gt;
+	your browser does not support canvas tag jackleg!
+&lt;/canvas&gt;
+  		
+<span class="highlight">&lt;script type="text/javascript"&gt;
+    $(window).load(animationExampleInit);
+    
+    function <span class="function">animationExampleInit</span>(e){
+    	//This API is implemented using the CanvasRenderingContext2D interface
+        canvasContext = $("#myCanvas")[0].getContext("2d");
+    }
+&lt;/script&gt;</span>
+		</pre>
+	</section>
+    <canvas width="600px" height="300px" id="myCanvas">your browser does not support canvas tag jackleg!</canvas>
+    <script type="text/javascript">
+        $(window).load(animationExampleInit);
+        
+        function animationExampleInit(e){
+            canvasContext = $("#myCanvas")[0].getContext("2d");
+        }
+    </script>
+    <nav>
+        <a id="left_btn" href="slide_03.html">Previous</a>
+        <a id="right_btn" href="slide_05.html">Next</a>
+    </nav>
+</body>

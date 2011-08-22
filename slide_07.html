@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="./images/favicon.ico" rel="shortcut icon">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="javaScript/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="javaScript/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Let's animate that circle</h1>
+    </header>
+    <div style="height:8px;" class="blackLine"></div>
+    <section class="code">
+        <pre>
+
+$(window).load(animationExampleInit);
+    
+var canvasContext;
+<span class="highlight">var xVal = 50;
+var yVal = 50;
+var xVelocity = 5;
+var yVelocity = 2.2;
+var timer;</span>
+
+function animationExampleInit(e){
+    canvasContext = $("#myCanvas")[0].getContext("2d");
+    drawBall();
+    <span class="highlight">startBall();</span>
+}
+
+function drawBall(){
+    canvasContext.beginPath();
+    canvasContext.arc(<span class="highlight">xVal, yVal,</span> 20, 0, Math.PI*2, false);
+    canvasContext.closePath();
+    canvasContext.fill();
+}
+
+<span class="highlight">function startBall(){
+    //1000 miliseconds / 30 == 33.33333 (video standard)
+    timer = setInterval(animateBall, 33);
+}
+
+function animateBall(e){
+    xVal += xVelocity;
+    yVal += yVelocity;
+    drawBall();
+}</span>
+
+        </pre>
+    </section>
+    <nav>
+        <a id="left_btn" href="slide_06.html">Previous</a>
+        <a id="right_btn" href="slide_08.html">Next</a>
+    </nav>
+</body>
