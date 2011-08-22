@@ -1,0 +1,5 @@
+WTH is the Canvas tag and how you can start making cool stuff for it.
+
+The Canvas tag has had a lot of buzz as it allows front end developers to produce dynamic motion graphics without the use of a plugin. Start harvesting the power of this awesome technology and learn the basics and some common pitfalls in this discussion.
+
+We will be covering a couple of basic building blocks of dynamic animation to get off on the right foot of programming animation. This will include; how to implement the Canvas tag, how to make something animate, why trig is important, and how to use trig in your animations. This discussion is for non-seasoned veterans of the web animation world and assumes you know the basics of HTML, CSS, and Javascript/JQuery.
