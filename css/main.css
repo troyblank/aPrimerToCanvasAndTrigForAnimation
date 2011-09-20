@@ -35,11 +35,18 @@ section.diagram{
 	width: 700px;
 	margin-left: auto; margin-right: auto;
 }
+section.bigDiagram{
+	width: 900px;
+	margin-left: auto; margin-right: auto;
+}
 section.contactInfo{
     line-height: 40px;
 }
 canvas{
 	margin: 10px auto 0px auto; border: 1px dashed #000000; background-color: #ffffff;
+}
+canvas.endCanvas{
+	margin: 0 0 0 50px; border: 1px dashed #000000; background-color: #ffffff;
 }
 pre{
 	padding-left: 30px;

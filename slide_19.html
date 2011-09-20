@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="./images/favicon.ico" rel="shortcut icon">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="javaScript/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="javaScript/main.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Fin</h1>
+    </header>
+    <div style="height:8px;" class="blackLine"></div>
+    <section class="contactInfo">
+        <img class="right" src="images/book.png" />
+        October 17th look for:<br />
+        Foundation HTML5 Animation with JavaScript<br />
+        <br /><br />
+        Thanks,
+        <br /><br />
+        Troy Blank<br />
+        troy@troyblank.com<br />
+        www.troyblank.com
+    </section>
+     <canvas width="800px" height="300px" id="myCanvas" class="endCanvas">your browser does not support canvas tag jackleg!</canvas>
+    <script type="text/javascript">
+        $(window).load(animationExampleInit);
+        
+        var canvasContext;
+        var xCenter = 300;
+        var yCenter = 150;
+        var timer;
+        var balls = [];
+        var r = 255;
+        var g = 0;
+        var b = 0;
+        var ball = {'angle':0, 'xVal':0, 'yVal':0, 'xCenter':0, 'yCenter':0, 'angleVelocity':0.1, 'radius':5, 'alpha':1, 'size':1, 'r':255, 'g':0, 'b':0, 'healthPoints':100}
+        var startAngle = 0;
+        var count = 0;
+        var bigCount = 0;
+        var colorSway = 50;
+        
+        Object.prototype.clone = function() {
+          var newObj = (this instanceof Array) ? [] : {};
+          for (i in this) {
+            if (i == 'clone') continue;
+            if (this[i] && typeof this[i] == "object") {
+              newObj[i] = this[i].clone();
+            } else newObj[i] = this[i]
+          } return newObj;
+        };
+        
+        function animationExampleInit(e){
+            canvasContext = $("#myCanvas")[0].getContext("2d");
+            balls.push(ball.clone());
+            drawBall();
+            startBall();
+        }
+        
+        function drawBall(){
+            clearCanvas(canvasContext);
+            for(var i = 0; i<balls.length; i++){
+                var b = balls[i];
+                canvasContext.save();
+                canvasContext.beginPath();
+                canvasContext.arc(b['xVal'], b['yVal'], b['size'], 0, Math.PI*2, false);
+                canvasContext.closePath();
+                //console.log("rgba("+b['r']+", "+b['g']+", "+b['b']+", 1)");
+                canvasContext.fillStyle = "rgba("+b['r']+", "+b['g']+", "+b['b']+", "+b['alpha']+")"; 
+                canvasContext.fill();
+                canvasContext.restore();
+            }
+        }
+        
+        function startBall(){
+        	timer = setInterval(animateBall, 33);
+        }
+        
+        function checkRGBBounds(val){
+            if(val > 255){
+                val = 255;
+            }else if (val <0){
+                val = 0;
+            }
+            return val;
+        }
+        
+        function animateBall(e){
+            count++;
+            bigCount++;
+            if(count >= 5){
+                if(bigCount < 300){
+                    var bb = ball.clone();
+                    bb['angle'] = startAngle += 0.13;
+                    r = checkRGBBounds(r+Math.floor(((colorSway/2)+0.5)- (Math.random()*colorSway )));
+                    g = checkRGBBounds(g+Math.floor(((colorSway/2)+0.5)- (Math.random()*colorSway )));
+                    b = checkRGBBounds(b+Math.floor(((colorSway/2)+0.5)- (Math.random()*colorSway )));
+                    bb['r'] = r;
+                    bb['g'] = g;
+                    bb['b'] = b;
+                    balls.push(bb);
+                    count = 0;
+                }else if(bigCount > 400){
+                    bigCount = 0;
+                } 
+            }
+            
+            for(var i = 0; i<balls.length; i++){
+                balls[i]['radius']++;
+                //if(balls[i]['radius'] > 45){
+                    //balls[i]['alpha'] -= 0.004;
+                //}
+                balls[i]['healthPoints'] -= 0.19;
+                
+                balls[i]['angle'] += balls[i]['angleVelocity'];
+                balls[i]['size'] += 0.1;
+                
+            	balls[i]['xVal'] = xCenter + Math.cos(balls[i]['angle']) * balls[i]['radius'];
+            	balls[i]['yVal'] = yCenter + Math.sin(balls[i]['angle']) * balls[i]['radius'];
+        	
+        	
+        	    if(balls[i]['healthPoints'] <= 0){
+        	        balls.splice(i, 1);
+        	    }
+        	
+        	    
+    	    }
+    	    drawBall();
+        }
+        
+        function clearCanvas(cxt, regPoints) {
+            var regPoints = $.extend({
+                x: 0,
+                y: 0
+            }, regPoints||{});
+            
+            cxt.clearRect(regPoints.x, regPoints.y, cxt.canvas.width, cxt.canvas.height);
+        }
+    </script>
+    <nav>
+        <a id="left_btn" href="slide_18.html">Previous</a>
+    </nav>
+</body>

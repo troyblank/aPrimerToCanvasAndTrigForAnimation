@@ -12,12 +12,57 @@
 </head>
 <body>
     <header>
-        <h1>Real world example</h1>
+        <h1>Woot! again</h1>
     </header>
     <div style="height:8px;" class="blackLine"></div>
-    <section>
-        <a href="http://acko.net/blog/js1k-demo-the-making-of">clicky</a>
-    </section>
+    <canvas width="600px" height="300px" id="myCanvas">your browser does not support canvas tag jackleg!</canvas>
+    <script type="text/javascript">
+        $(window).load(animationExampleInit);
+        
+        var canvasContext;
+        var angle = 0;
+        var xVal = 0;
+        var yVal = 0;
+        var xCenter = 300;
+        var yCenter = 150;
+        var angleVelocity = 0.1;
+        var radius = 100;
+        var timer;
+        
+        function animationExampleInit(e){
+            canvasContext = $("#myCanvas")[0].getContext("2d");
+            drawBall();
+            startBall();
+        }
+        
+        function drawBall(){
+            clearCanvas(canvasContext);
+            canvasContext.beginPath();
+            canvasContext.arc(xVal, yVal, 20, 0, Math.PI*2, false);
+            canvasContext.closePath();
+            canvasContext.fill();
+        }
+        
+        function startBall(){
+        	timer = setInterval(animateBall, 33);
+        }
+        
+        function animateBall(e){
+            angle += angleVelocity;
+        	xVal = xCenter + Math.cos(angle) * radius;
+        	yVal = yCenter + Math.sin(angle) * radius;
+        	drawBall();
+        }
+        
+        function clearCanvas(cxt, regPoints) {
+            var regPoints = $.extend({
+                x: 0,
+                y: 0
+            }, regPoints||{});
+            
+            cxt.clearRect(regPoints.x, regPoints.y, cxt.canvas.width, cxt.canvas.height);
+        }
+    </script>
     <nav>
         <a id="left_btn" href="slide_16.html">Previous</a>
         <a id="right_btn" href="slide_18.html">Next</a>

@@ -12,57 +12,49 @@
 </head>
 <body>
     <header>
-        <h1>Woot! again</h1>
+        <h1>Let's add the math to our animation</h1>
     </header>
     <div style="height:8px;" class="blackLine"></div>
-    <canvas width="600px" height="300px" id="myCanvas">your browser does not support canvas tag jackleg!</canvas>
-    <script type="text/javascript">
-        $(window).load(animationExampleInit);
+        <section class="code">
+        <pre>    
+var canvasContext;
+var angle = 0;
+<span class="highlight">var xVal = 0;
+var yVal = 0;
+var xCenter = 300;
+var yCenter = 150;
+var angleVelocity = 0.1;
+var radius = 100;</span>
+var timer;
         
-        var canvasContext;
-        var angle = 0;
-        var xVal = 0;
-        var yVal = 0;
-        var xCenter = 300;
-        var yCenter = 150;
-        var angleVelocity = 0.1;
-        var radius = 100;
-        var timer;
+function animationExampleInit(e){
+    canvasContext = $("#myCanvas")[0].getContext("2d");
+    drawBall();
+    startBall();
+}
+
+function drawBall(){
+    clearCanvas(canvasContext);
+    canvasContext.beginPath();
+    <span class="highlight">canvasContext.arc(xVal, yVal, 20, 0, Math.PI*2, false);</span>
+    canvasContext.closePath();
+    canvasContext.fill();
+}
+
+function startBall(){
+    timer = setInterval(animateBall, 33);
+}
+
+function animateBall(e){
+   <span class="highlight"> angle += angleVelocity;
+    xVal = xCenter + Math.cos(angle) * radius;
+    yVal = yCenter + Math.sin(angle) * radius;</span>
+    drawBall();
+}
         
-        function animationExampleInit(e){
-            canvasContext = $("#myCanvas")[0].getContext("2d");
-            drawBall();
-            startBall();
-        }
-        
-        function drawBall(){
-            clearCanvas(canvasContext);
-            canvasContext.beginPath();
-            canvasContext.arc(xVal, yVal, 20, 0, Math.PI*2, false);
-            canvasContext.closePath();
-            canvasContext.fill();
-        }
-        
-        function startBall(){
-        	timer = setInterval(animateBall, 33);
-        }
-        
-        function animateBall(e){
-            angle += angleVelocity;
-        	xVal = xCenter + Math.cos(angle) * radius;
-        	yVal = yCenter + Math.sin(angle) * radius;
-        	drawBall();
-        }
-        
-        function clearCanvas(cxt, regPoints) {
-            var regPoints = $.extend({
-                x: 0,
-                y: 0
-            }, regPoints||{});
-            
-            cxt.clearRect(regPoints.x, regPoints.y, cxt.canvas.width, cxt.canvas.height);
-        }
-    </script>
+...
+        </pre>
+    </section>
     <nav>
         <a id="left_btn" href="slide_15.html">Previous</a>
         <a id="right_btn" href="slide_17.html">Next</a>
