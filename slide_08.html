@@ -24,7 +24,6 @@
         var yVal = 50;
         var xVelocity = 5;
         var yVelocity = 2.2;
-        var timer;
         
         function animationExampleInit(e){
             canvasContext = $("#myCanvas")[0].getContext("2d");
@@ -40,13 +39,14 @@
         }
         
         function startBall(){
-        	timer = setInterval(animateBall, 33);
+        	setTimeout(animateBall, 33);
         }
         
         function animateBall(e){
         	xVal += xVelocity;
         	yVal += yVelocity;
         	drawBall();
+        	setTimeout(animateBall, 33);
         }
     </script>
     <nav>

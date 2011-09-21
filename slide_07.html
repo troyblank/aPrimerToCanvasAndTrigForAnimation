@@ -24,8 +24,7 @@ var canvasContext;
 <span class="highlight">var xVal = 50;
 var yVal = 50;
 var xVelocity = 5;
-var yVelocity = 2.2;
-var timer;</span>
+var yVelocity = 2.2;</span>
 
 function animationExampleInit(e){
     canvasContext = $("#myCanvas")[0].getContext("2d");
@@ -42,13 +41,15 @@ function drawBall(){
 
 <span class="highlight">function startBall(){
     //1000 miliseconds / 30 == 33.33333 (video standard)
-    timer = setInterval(animateBall, 33);
+    //don't use setInterval for animation
+    setTimeout(animateBall, 33);
 }
 
 function animateBall(e){
     xVal += xVelocity;
     yVal += yVelocity;
     drawBall();
+    setTimeout(animateBall, 33);
 }</span>
 
         </pre>

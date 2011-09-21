@@ -25,9 +25,8 @@
         var yVal = 0;
         var xCenter = 300;
         var yCenter = 150;
-        var angleVelocity = 0.1;
+        var angleVelocity = 0.07;
         var radius = 100;
-        var timer;
         
         function animationExampleInit(e){
             canvasContext = $("#myCanvas")[0].getContext("2d");
@@ -41,10 +40,11 @@
             canvasContext.arc(xVal, yVal, 20, 0, Math.PI*2, false);
             canvasContext.closePath();
             canvasContext.fill();
+            setTimeout(animateBall, 33);
         }
         
         function startBall(){
-        	timer = setInterval(animateBall, 33);
+        	setTimeout(animateBall, 33);
         }
         
         function animateBall(e){

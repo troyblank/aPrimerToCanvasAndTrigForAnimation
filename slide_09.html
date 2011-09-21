@@ -28,13 +28,14 @@ function drawBall(){
 }
 
 function startBall(){
-    timer = setInterval(animateBall, 33);
+    setTimeout(animateBall, 33);
 }
 
 function animateBall(e){
     xVal += xVelocity;
     yVal += yVelocity;
     drawBall();
+    setTimeout(animateBall, 33);
 }
 
 <span class="highlight">function clearCanvas(cxt) {

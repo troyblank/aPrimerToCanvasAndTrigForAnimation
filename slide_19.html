@@ -33,12 +33,11 @@
         var canvasContext;
         var xCenter = 300;
         var yCenter = 150;
-        var timer;
         var balls = [];
         var r = 255;
         var g = 0;
         var b = 0;
-        var ball = {'angle':0, 'xVal':0, 'yVal':0, 'xCenter':0, 'yCenter':0, 'angleVelocity':0.1, 'radius':5, 'alpha':1, 'size':1, 'r':255, 'g':0, 'b':0, 'healthPoints':100}
+        var ball = {'angle':0, 'xVal':0, 'yVal':0, 'xCenter':0, 'yCenter':0, 'angleVelocity':0.09, 'radius':5, 'alpha':1, 'size':1, 'r':255, 'g':0, 'b':0, 'healthPoints':100}
         var startAngle = 0;
         var count = 0;
         var bigCount = 0;
@@ -69,15 +68,15 @@
                 canvasContext.beginPath();
                 canvasContext.arc(b['xVal'], b['yVal'], b['size'], 0, Math.PI*2, false);
                 canvasContext.closePath();
-                //console.log("rgba("+b['r']+", "+b['g']+", "+b['b']+", 1)");
                 canvasContext.fillStyle = "rgba("+b['r']+", "+b['g']+", "+b['b']+", "+b['alpha']+")"; 
                 canvasContext.fill();
                 canvasContext.restore();
             }
+            setTimeout(animateBall, 40);
         }
         
         function startBall(){
-        	timer = setInterval(animateBall, 33);
+        	setTimeout(animateBall, 33);
         }
         
         function checkRGBBounds(val){
@@ -111,9 +110,6 @@
             
             for(var i = 0; i<balls.length; i++){
                 balls[i]['radius']++;
-                //if(balls[i]['radius'] > 45){
-                    //balls[i]['alpha'] -= 0.004;
-                //}
                 balls[i]['healthPoints'] -= 0.19;
                 
                 balls[i]['angle'] += balls[i]['angleVelocity'];
